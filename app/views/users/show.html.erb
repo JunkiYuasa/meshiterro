@@ -1,9 +1,11 @@
-<h1>ユーザー情報</h1>
+<h1>プロフィール</h1>
 <div>
-  <h3><% @user.name %></h3>
+  <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
 </div>
-
+<% if @user == current_user %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
 
 <h1>ユーザー投稿一覧</h1>
 <% @post_images.each do |post_image| %>
